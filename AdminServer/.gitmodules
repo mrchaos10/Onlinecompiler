@@ -1,0 +1,3 @@
+[submodule "PdcProjPart"]
+	path = PdcProjPart
+	url = https://github.com/mrchaos10/OnlineCompiler.git

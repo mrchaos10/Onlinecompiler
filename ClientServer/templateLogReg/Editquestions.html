@@ -1,0 +1,140 @@
+<html>
+    <head>
+          <title> Edit Questions </title>
+          <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+          <link rel="stylesheet" href="client/assets/css/style.css">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+    </head>
+    <style>
+            #container .myUL{
+      padding:0px;
+    }
+    
+    #container .myUL .myList {
+      list-style-type: none;
+      border:1px solid grey;
+      padding:5%;
+      border-radius:5px;
+      margin:4px;
+    }
+    .click{
+      width:80px;
+      height:30px;
+      border-radius:5px;
+      color:#fff;
+      background:#323232;
+      font-size:15px;
+        
+    }
+        </style>
+        </head>
+    <body>
+         
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width">
+      <title>Questions</title>
+    </head>
+    <body>
+      <!-- create a ul li using js  -->
+    
+      <button class="click" onclick="myFunction()">Click Me</button>
+    <div id="container"></div>
+    </body>
+    
+      <body>
+          <div class="container">
+
+            <!-- Trigger the modal with a button -->
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+              <div class="modal-dialog">
+        
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Enter the Question Details</h4>
+                  </div>
+                  <div class="modal-body">
+                    <form method="post" action="/addname">
+                      <label for="questiontitle">Question Title:</label> 
+                      <input type="text" name="title" id="title"  />
+                      <br>
+                      <label for="question">Question:</label>
+                      <input type="text" name="description" id="description" />
+                      <br>
+                      <label for="sample test case">Sample test Case:</label> 
+                      <input type="file" name="testcase" id="testcase"/>
+                      <br>
+                      <label for="description">Extended Test Cases:</label> 
+                      <input type="file" name="extendedtestcases" id="extendedtestcases" />
+                      <br>
+                      <input id="clickMe" type="submit" value="Submit" />
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+        
+              </div>
+            </div>
+        
+          </div>
+       </body>
+       <script type="text/javascript">
+           var arr = [
+     Math.random().toFixed(2),
+     Math.random().toFixed(2),
+     Math.random().toFixed(2),
+     Math.random().toFixed(2),
+     Math.random().toFixed(2)
+   ];
+   $(document).ready(function() {
+   
+        $.getJSON("http://localhost:3000/list", function(json1) {
+                 $.each(json1, function(key, data) {
+                 console.log('questions.html');
+                 console.log('hhi');
+                 console.log(data.title+''+data.latitude+''+data.longitude);
+               });
+               });
+             });  
+   console.log(arr);
+   var ul = document.createElement('ul');
+   ul.className = 'myUL';
+   document.getElementById('container').appendChild(ul);
+   
+   function myFunction() {
+        
+        //for(var i =0;i<5;i++){
+          //arr.push(Math.random().toFixed(2));
+        //}
+     create(arr);
+   }
+
+   function mYfunction(){
+    $('#myModal').modal('toggle');
+   }
+   function create(arr){
+     arr.forEach(function(data){
+     var li = document.createElement('li');
+     ul.appendChild(li);
+     li.innerHTML += data;
+     li.className = "myList";
+     li.innerHTML += "<div style='position:relative;bottom:1px;right:1px;'>"
+     li.innerHTML += `<button class="btn btn-primary" style="float:right;" onClick="mYfunction()">Edit Question</button>`;
+     li.innerHTML += "</div>";
+   
+   });
+   }create(arr);
+
+   </script>
+         
+</html>
